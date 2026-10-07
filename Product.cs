@@ -1,9 +1,10 @@
+namespace Inventory_Management_System;
 
-public class Products
+public class Product
 {
 
-    private string _name;
-    private double _price;
+    private string _name = string.Empty;
+    private decimal _price;
     private int _quantity;
 
     public string Name
@@ -21,7 +22,7 @@ public class Products
     }
 
 
-    public double Price
+    public decimal Price
     {
         get
         {
@@ -30,7 +31,7 @@ public class Products
         set
         {
             if (value <= 0)
-                throw new ArgumentException("Price must be greater than 0");
+                throw new ArgumentOutOfRangeException(nameof(value), "Price must be greater than 0");
             _price = value;
         }
     }
@@ -45,14 +46,14 @@ public class Products
         set
         {
             if (value < 0)
-                throw new ArgumentException("quantity cant be negative");
+                throw new ArgumentOutOfRangeException(nameof(value), "Quantity can't be negative");
 
             _quantity = value;
         }
     }
 
 
-    public Products(string name, double price, int quantity)
+    public Product(string name, decimal price, int quantity)
     {
         Name = name;
         Price = price;
