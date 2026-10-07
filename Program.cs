@@ -203,4 +203,14 @@ class Program
         return inventory.Add(new Product(name, price, quantity));
     }
 
+    public static void DeleteProduct(Inventory inventory, string name)
+    {
+        bool deleted = inventory.Delete(name);
+
+        if (deleted)
+            Console.WriteLine("Product Deleted Successfully.");
+        else
+            Console.WriteLine("Product Not Found.");
+    }
+
 }
