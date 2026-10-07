@@ -194,5 +194,13 @@ class Program
         Console.WriteLine("6. Exit.");
     }
 
+    public static bool AddProduct(
+            Inventory inventory,
+            string name,
+            decimal price,
+            int quantity)
+    {
+        return inventory.Add(new Product(name, price, quantity));
+    }
 
 }
