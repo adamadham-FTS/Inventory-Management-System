@@ -238,4 +238,26 @@ class Program
                 break;
         }
     }
+
+    public static void ViewAllProducts(Inventory inventory)
+    {
+        List<Product> products = inventory.ViewAll();
+
+        if (products.Count == 0)
+        {
+            Console.WriteLine("Inventory Is Empty.");
+            return;
+        }
+
+        Console.WriteLine("All Products:");
+
+        foreach (Product product in products)
+        {
+            Console.WriteLine($"Name: {product.Name}");
+            Console.WriteLine($"Price: {product.Price}");
+            Console.WriteLine($"Quantity: {product.Quantity}");
+            Console.WriteLine("----------------------");
+        }
+    }
+
 }
