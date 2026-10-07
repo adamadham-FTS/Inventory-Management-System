@@ -22,166 +22,168 @@ class Program
             switch (choice)
             {
                 case 1:
+                {
+                    string name;
+
+                    while (true)
                     {
-                        string name;
+                        Console.WriteLine("Please Enter Product Name:");
+                        name = (Console.ReadLine() ?? string.Empty).Trim();
 
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Name:");
-                            name = (Console.ReadLine() ?? string.Empty).Trim();
+                        if (!string.IsNullOrWhiteSpace(name))
+                            break;
 
-                            if (!string.IsNullOrWhiteSpace(name))
-                                break;
-
-                            Console.WriteLine("Invalid name. Try again.");
-                        }
-
-                        decimal price;
-
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Price:");
-
-                            if (decimal.TryParse(Console.ReadLine(), out price)
-                                && price > 0)
-                                break;
-
-                            Console.WriteLine("Invalid price. Try again.");
-                        }
-
-                        int quantity;
-
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Quantity:");
-
-                            if (int.TryParse(Console.ReadLine(), out quantity)
-                                && quantity >= 0)
-                                break;
-
-                            Console.WriteLine("Invalid quantity. Try again.");
-                        }
-
-                        if (AddProduct(inventory, name, price, quantity))
-                            Console.WriteLine("Product Added Successfully.");
-                        else
-                            Console.WriteLine("Product Already Exists.");
-
-                        break;
+                        Console.WriteLine("Invalid name. Try again.");
                     }
+
+                    decimal price;
+
+                    while (true)
+                    {
+                        Console.WriteLine("Please Enter Product Price:");
+
+                        if (decimal.TryParse(Console.ReadLine(), out price)
+                            && price > 0)
+                            break;
+
+                        Console.WriteLine("Invalid price. Try again.");
+                    }
+
+                    int quantity;
+
+                    while (true)
+                    {
+                        Console.WriteLine("Please Enter Product Quantity:");
+
+                        if (int.TryParse(Console.ReadLine(), out quantity)
+                            && quantity >= 0)
+                            break;
+
+                        Console.WriteLine("Invalid quantity. Try again.");
+                    }
+
+                    if (AddProduct(inventory, name, price, quantity))
+                        Console.WriteLine("Product Added Successfully.");
+                    else
+                        Console.WriteLine("Product Already Exists.");
+
+                    break;
+                }
 
                 case 2:
-                    {
-                        ViewAllProducts(inventory);
-                        break;
-                    }
+                {
+                    ViewAllProducts(inventory);
+                    break;
+                }
 
                 case 3:
+                {
+                    string oldName;
+
+                    while (true)
                     {
-                        string oldName;
+                        Console.WriteLine("Please Enter Product Name You Want To Edit:");
+                        oldName = (Console.ReadLine() ?? string.Empty).Trim();
 
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Name You Want To Edit:");
-                            oldName = (Console.ReadLine() ?? string.Empty).Trim();
+                        if (!string.IsNullOrWhiteSpace(oldName))
+                            break;
 
-                            if (!string.IsNullOrWhiteSpace(oldName))
-                                break;
-
-                            Console.WriteLine("Invalid name. Try again.");
-                        }
-
-                        string newName;
-
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter New Product Name:");
-                            newName = (Console.ReadLine() ?? string.Empty).Trim();
-
-                            if (!string.IsNullOrWhiteSpace(newName))
-                                break;
-
-                            Console.WriteLine("Invalid name. Try again.");
-                        }
-
-                        decimal price;
-
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter New Product Price:");
-
-                            if (decimal.TryParse(Console.ReadLine(), out price)
-                                && price > 0)
-                                break;
-
-                            Console.WriteLine("Invalid price. Try again.");
-                        }
-
-                        int quantity;
-
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter New Product Quantity:");
-
-                            if (int.TryParse(Console.ReadLine(), out quantity)
-                                && quantity >= 0)
-                                break;
-
-                            Console.WriteLine("Invalid quantity. Try again.");
-                        }
-
-                        EditProduct(inventory, newName, price, quantity, oldName);
-                        break;
+                        Console.WriteLine("Invalid name. Try again.");
                     }
+
+                    string newName;
+
+                    while (true)
+                    {
+                        Console.WriteLine("Please Enter New Product Name:");
+                        newName = (Console.ReadLine() ?? string.Empty).Trim();
+
+                        if (!string.IsNullOrWhiteSpace(newName))
+                            break;
+
+                        Console.WriteLine("Invalid name. Try again.");
+                    }
+
+                    decimal price;
+
+                    while (true)
+                    {
+                        Console.WriteLine("Please Enter New Product Price:");
+
+                        if (decimal.TryParse(Console.ReadLine(), out price)
+                            && price > 0)
+                            break;
+
+                        Console.WriteLine("Invalid price. Try again.");
+                    }
+
+                    int quantity;
+
+                    while (true)
+                    {
+                        Console.WriteLine("Please Enter New Product Quantity:");
+
+                        if (int.TryParse(Console.ReadLine(), out quantity)
+                            && quantity >= 0)
+                            break;
+
+                        Console.WriteLine("Invalid quantity. Try again.");
+                    }
+
+                    EditProduct(inventory, newName, price, quantity, oldName);
+
+                    break;
+                }
 
                 case 4:
+                {
+                    string name;
+
+                    while (true)
                     {
-                        string name;
+                        Console.WriteLine("Please Enter Product Name:");
+                        name = (Console.ReadLine() ?? string.Empty).Trim();
 
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Name:");
-                            name = (Console.ReadLine() ?? string.Empty).Trim();
+                        if (!string.IsNullOrWhiteSpace(name))
+                            break;
 
-                            if (!string.IsNullOrWhiteSpace(name))
-                                break;
-
-                            Console.WriteLine("Invalid name. Try again.");
-                        }
-
-                        DeleteProduct(inventory, name);
-                        break;
+                        Console.WriteLine("Invalid name. Try again.");
                     }
+
+                    DeleteProduct(inventory, name);
+                    break;
+                }
 
                 case 5:
+                {
+                    string name;
+
+                    while (true)
                     {
-                        string name;
+                        Console.WriteLine("Please Enter Product Name:");
+                        name = (Console.ReadLine() ?? string.Empty).Trim();
 
-                        while (true)
-                        {
-                            Console.WriteLine("Please Enter Product Name:");
-                            name = (Console.ReadLine() ?? string.Empty).Trim();
+                        if (!string.IsNullOrWhiteSpace(name))
+                            break;
 
-                            if (!string.IsNullOrWhiteSpace(name))
-                                break;
-
-                            Console.WriteLine("Invalid name. Try again.");
-                        }
-
-                        FindProduct(inventory, name);
-                        break;
+                        Console.WriteLine("Invalid name. Try again.");
                     }
+
+                    FindProduct(inventory, name);
+                    break;
+                }
 
                 case 6:
-                    {
-                        Console.WriteLine("Exiting...");
-                        return;
-                    }
+                {
+                    Console.WriteLine("Exiting...");
+                    return;
+                }
             }
 
             Console.WriteLine();
         }
     }
+
 
     public static void DisplayMenu()
     {
@@ -194,14 +196,16 @@ class Program
         Console.WriteLine("6. Exit.");
     }
 
+
     public static bool AddProduct(
-            Inventory inventory,
-            string name,
-            decimal price,
-            int quantity)
+        Inventory inventory,
+        string name,
+        decimal price,
+        int quantity)
     {
         return inventory.Add(new Product(name, price, quantity));
     }
+
 
     public static void DeleteProduct(Inventory inventory, string name)
     {
@@ -212,32 +216,35 @@ class Program
         else
             Console.WriteLine("Product Not Found.");
     }
+
+
     public static void EditProduct(
-           Inventory inventory,
-           string name,
-           decimal price,
-           int quantity,
-           string oldName)
+        Inventory inventory,
+        string name,
+        decimal price,
+        int quantity,
+        string oldName)
     {
         Product updatedProduct = new(name, price, quantity);
 
-        int result = inventory.Edit(updatedProduct, oldName);
+        EditResult result = inventory.Edit(updatedProduct, oldName);
 
         switch (result)
         {
-            case 200:
+            case EditResult.Success:
                 Console.WriteLine("Product Edited Successfully.");
                 break;
 
-            case 403:
+            case EditResult.DuplicateName:
                 Console.WriteLine("A Product With This Name Already Exists.");
                 break;
 
-            case 404:
+            case EditResult.NotFound:
                 Console.WriteLine("Product Not Found.");
                 break;
         }
     }
+
 
     public static void ViewAllProducts(Inventory inventory)
     {
@@ -259,6 +266,8 @@ class Program
             Console.WriteLine("----------------------");
         }
     }
+
+
     public static void FindProduct(Inventory inventory, string name)
     {
         Product? product = inventory.Search(name);

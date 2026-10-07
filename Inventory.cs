@@ -1,4 +1,12 @@
+
 namespace Inventory_Management_System;
+
+public enum EditResult
+{
+    Success,
+    NotFound,
+    DuplicateName
+}
 
 public class Inventory
 {
@@ -8,7 +16,10 @@ public class Inventory
     public bool IsInInventory(string name)
     {
         return productsList.Exists(
-            p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+            p => p.Name.Equals(
+                name,
+                StringComparison.OrdinalIgnoreCase
+            )
         );
     }
 
@@ -26,19 +37,22 @@ public class Inventory
     public bool Delete(string name)
     {
         int removed = productsList.RemoveAll(
-            p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+            p => p.Name.Equals(
+                name,
+                StringComparison.OrdinalIgnoreCase
+            )
         );
 
         return removed > 0;
     }
 
 
-    public int Edit(Product product, string name)
+    public EditResult Edit(Product product, string name)
     {
         var existingProduct = Search(name);
 
         if (existingProduct is null)
-            return 404;
+            return EditResult.NotFound;
 
 
         bool nameChanged = !name.Equals(
@@ -48,14 +62,14 @@ public class Inventory
 
 
         if (nameChanged && IsInInventory(product.Name))
-            return 403;
+            return EditResult.DuplicateName;
 
 
         existingProduct.Name = product.Name;
         existingProduct.Price = product.Price;
         existingProduct.Quantity = product.Quantity;
 
-        return 200;
+        return EditResult.Success;
     }
 
 
@@ -68,7 +82,10 @@ public class Inventory
     public Product? Search(string name)
     {
         return productsList.Find(
-            p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase)
+            p => p.Name.Equals(
+                name,
+                StringComparison.OrdinalIgnoreCase
+            )
         );
     }
 }
