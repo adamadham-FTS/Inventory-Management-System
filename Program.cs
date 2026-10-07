@@ -212,5 +212,30 @@ class Program
         else
             Console.WriteLine("Product Not Found.");
     }
+    public static void EditProduct(
+           Inventory inventory,
+           string name,
+           decimal price,
+           int quantity,
+           string oldName)
+    {
+        Product updatedProduct = new(name, price, quantity);
 
+        int result = inventory.Edit(updatedProduct, oldName);
+
+        switch (result)
+        {
+            case 200:
+                Console.WriteLine("Product Edited Successfully.");
+                break;
+
+            case 403:
+                Console.WriteLine("A Product With This Name Already Exists.");
+                break;
+
+            case 404:
+                Console.WriteLine("Product Not Found.");
+                break;
+        }
+    }
 }
