@@ -259,5 +259,19 @@ class Program
             Console.WriteLine("----------------------");
         }
     }
+    public static void FindProduct(Inventory inventory, string name)
+    {
+        Product? product = inventory.Search(name);
 
+        if (product is null)
+        {
+            Console.WriteLine("Product Not Found.");
+            return;
+        }
+
+        Console.WriteLine("Product Found:");
+        Console.WriteLine($"Name: {product.Name}");
+        Console.WriteLine($"Price: {product.Price}");
+        Console.WriteLine($"Quantity: {product.Quantity}");
+    }
 }
